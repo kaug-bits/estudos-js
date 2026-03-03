@@ -108,3 +108,21 @@ button.editar:hover {
     background-color: #60041A;
     color: #F4F0EA;
 }
+
+button.concluir {
+    background-color: #2E7D32; /* verde mais bonito */
+    color: white;
+    padding: 5px 8px;
+    font-size: 0.6em;
+    border-radius: 5px;
+    margin-left: 5px;
+    transition: all 0.3s ease;
+}
+
+button.concluir:hover {
+    background-color: #1B5E20;
+}
+.concluida {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
