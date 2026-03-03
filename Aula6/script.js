@@ -18,7 +18,16 @@ function adicionarTarefa() {
         mensagem.textContent = mensagemSucesso
         tarefas.push({
             texto: tarefa,
-            concluida: false
+            concluida: false,
+            
+            dataHora: new Date().toLocaleDateString('pt-BR', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        })
+
         })
         atualizarAplicacao()
     }
@@ -28,36 +37,60 @@ function adicionarTarefa() {
 }
 
 function renderizarTarefas() {
-    
-    listaTarefas.innerHTML = ""
+    listaTarefas.innerHTML = ""  
 
-    for (let i = 0; i < tarefas.length; i++){
+    for (let i = 0; i < tarefas.length; i++) {
+  
         let novaTarefa = document.createElement("li")
-        novaTarefa.textContent = tarefas[i].texto
-
-        if(tarefas[i].concluida){
+        novaTarefa.className = "tarefa-item"
+        if (tarefas[i].concluida) {
             novaTarefa.classList.add("concluida")
         }
+
         
+        let conteudo = document.createElement("div")
+        conteudo.className = "conteudo-tarefa"
+
+     
+        let textoTarefa = document.createElement("span")
+        textoTarefa.textContent = tarefas[i].texto
+        textoTarefa.className = "texto-tarefa"
+
+        
+        let infoTarefa = document.createElement("span")
+        infoTarefa.className = "info-tarefa"
+        infoTarefa.textContent = tarefas[i].dataHora
+
+        conteudo.appendChild(textoTarefa)
+        conteudo.appendChild(infoTarefa)
+
+      
+        let botoes = document.createElement("div")
+        botoes.className = "botoes-tarefa"
+
         let botaoConcluir = document.createElement("button")
         botaoConcluir.className = "concluir"
         botaoConcluir.textContent = tarefas[i].concluida ? "Desfazer" : "Concluir"
         botaoConcluir.onclick = () => concluirTarefa(i)
-        
-        let botaoRemover = document.createElement("button")
-        botaoRemover.className = "remover"
-        botaoRemover.textContent = "Remover"
-        botaoRemover.onclick = () => removerTarefa(i)
 
         let botaoEditar = document.createElement("button")
         botaoEditar.className = "editar"
         botaoEditar.textContent = "Editar"
         botaoEditar.onclick = () => editarTarefa(i)
+
+        let botaoRemover = document.createElement("button")
+        botaoRemover.className = "remover"
+        botaoRemover.textContent = "Remover"
+        botaoRemover.onclick = () => removerTarefa(i)
+
+        botoes.appendChild(botaoConcluir)
+        botoes.appendChild(botaoEditar)
+        botoes.appendChild(botaoRemover)
+
         
-        novaTarefa.appendChild(botaoConcluir)
-        novaTarefa.appendChild(botaoRemover)
-        novaTarefa.appendChild(botaoEditar)
-        
+        novaTarefa.appendChild(conteudo)
+        novaTarefa.appendChild(botoes)
+
         listaTarefas.appendChild(novaTarefa)
     }
 }

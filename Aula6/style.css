@@ -53,7 +53,7 @@ ul li {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo para o campo de entrada */
+
 input[type="text"] {
     padding: 10px;
     width: 80%;
@@ -110,7 +110,7 @@ button.editar:hover {
 }
 
 button.concluir {
-    background-color: #2E7D32; /* verde mais bonito */
+    background-color: #2E7D32; 
     color: white;
     padding: 5px 8px;
     font-size: 0.6em;
@@ -125,4 +125,49 @@ button.concluir:hover {
 .concluida {
     text-decoration: line-through;
     opacity: 0.6;
+}
+
+.tarefa-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.tarefa-item.concluida .texto-tarefa {
+    text-decoration: line-through;
+    color: gray;
+}
+
+
+.texto-tarefa {
+    font-size: 1.2em; 
+    font-weight: 500;
+    display: block;   
+    color: #331F19;
+}
+
+
+.info-tarefa {
+    font-size: 0.8em; 
+    color: #504e4d;      
+    display: block; 
+    margin-top: 2px;
+}
+
+.conteudo-tarefa {
+    display: flex;         
+    flex-direction: column; 
+    text-align: left;
+    flex-grow: 1;
+}
+
+.botoes-tarefa {
+    display: flex;          
+    gap: 5px;               
+    align-items: center;
 }
